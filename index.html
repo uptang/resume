@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的简历</title>
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/reset.css"/>
+	<link rel="stylesheet" href="css/swiper.3.1.7.min.css"/>
+	<link rel="stylesheet" href="css/animate.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/shnvfont.css" />
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/font.js"></script>
+	<script type="text/javascript" src="js/swiper.animate1.0.2.min.js"></script>
+	<script type="text/javascript" src="js/swiper.3.1.7.jquery.min.js"></script>
+    <script type="text/javascript" src="js/picPreload.js"></script>
+	<style type="text/css">
+		body,html{
+			height: 100%;
+		}
+        /*预加载*/
+        .loading {
+            position:absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+            background:url("images/loading.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+        .loadTime {
+            position:absolute;
+            top: 46%;
+            left: 33%;
+            width: 200px;
+            height: 60px;
+            text-align: center;
+        }
+        .loadTime strong{
+            font-size: 60px;
+            color:#fff;
+        }
+        .loadTime em {
+            color:#fff;
+            font-size: 36px;
+        }
+        /*.swiper-container {
+            display:none;
+        }*/
+		.swiper-container {
+		    width: 100%;
+		    height: 100%;
+		}
+        /*第一屏*/
+		.swiper-wrapper .bg1 {
+			background: rgb(45,204,112);
+		}
+		.cloud {
+			width: 100%;
+			height: 76%;
+		}
+		.cloud-bg {
+			width: 100%;
+			height: 100%;
+		}
+		.resm {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			height: 60%;
+		}
+		.myname {
+			width: 100%;
+			color: rgb(45,204,112);
+			font-size: 2rem;
+			text-align: center;
+			height: 12.66rem;
+			line-height: 9rem;
+            font-family: shnv-font;
+		}
+		.myresm {
+			margin: 0 auto;
+			display: block;
+			width: 80%;
+			height: 17%;
+		}
+		.fly {
+			margin-left: 15%;
+			width: 30%;
+		}
+		.fly-bg {
+			width: 100%;
+			height: 100%;
+		}
+        /*第二屏*/
+		.swiper-wrapper .bg2,
+        .swiper-wrapper .bg3,
+        .swiper-wrapper .bg4,
+        .swiper-wrapper .bg5 {
+			background: rgb(160,248,198);
+		}
+		.bg2-top,
+        .bg3-top,
+        .bg4-top {
+			width: 100%;
+			height: 4.67rem;
+		}
+		.b2t-cloud,
+        .b3t-cloud,
+        .b4t-cloud {
+			height: 100%;
+		}
+        /*第二屏标题*/
+		.bg2-tit,
+        .bg3-tit,
+        .bg4-tit {
+			position: relative;
+			width: 80%;
+			margin: 0 auto;
+			height: 3.96rem;
+		}
+		.b2t-tit,
+        .b3t-tit,
+        .b4t-tit {
+			width: 100%;
+			height: 100%;
+		}
+		.bg2-h2,
+        .bg3-h2,
+        .bg4-h2 {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			color: #fff;
+			text-align: center;
+			font-size: 1.3rem;
+			line-height: 3.5rem;
+            font-family: shnv-font;
+		}
+        /*第二屏头像*/
+        .bg2-head {
+            margin: 0 auto;
+            width: 35%;
+            height: 9rem;
+            background:rgba(255, 255, 255, 0.7);
+            border-radius: 5px;
+            padding: 2%;
+        }
+        .bg2-head img {
+            width:100%;
+            height:100%;
+            border-radius: 5px;
+        }
+        /*第二屏个人信息*/
+        .bg2-con p{
+            text-align: center;
+            color: #666;
+            font-size: 1.5rem;
+            line-height: 3rem;
+            font-family: shnv-font;
+        }
+        /*第二屏底部背景*/
+        .bg2-bot,
+        .bg3-bot,
+        .bg4-bot {
+            position:absolute;
+            bottom: 0;
+            width:100%;
+            height:10rem;      
+        }
+        .bg2-bot {
+            background:url("images/bg2.png") no-repeat;
+            background-size: cover;
+        }
+        /*第三屏*/
+        .bg3-top {
+            margin-left: 16%;
+        }
+        .bg3-con p {
+            height: 2.8rem;
+            font-size: 2.3rem;
+            line-height: 2.8rem;
+            color:#fff;
+            font-family: shnv-font;
+        }
+        .html-strip{
+            width:90%;
+            height:1.8rem;
+            border-radius: 5px;
+            background:skyblue;
+            background: -moz-linear-gradient(left, #6fba2b, #f5fb97);
+            /* Safari 5.1+, Chrome 10+ */
+            background: -webkit-linear-gradient(left, #6fba2b, #f5fb97);
+            /* Opera 11.10+ */
+            background: -o-linear-gradient(left, #6fba2b, #f5fb97);
+        }
+        .css-strip{
+            width:86%;
+            height:1.8rem;
+            border-radius: 5px;
+            background:skyblue;
+            background: -moz-linear-gradient(left, #ede964, #ff8c6e);
+            /* Safari 5.1+, Chrome 10+ */
+            background: -webkit-linear-gradient(left, #ede964, #ff8c6e);
+            /* Opera 11.10+ */
+            background: -o-linear-gradient(left, #ede964, #ff8c6e);
+        }
+        .js-strip{
+            width:76%;
+            height:1.8rem;
+            border-radius: 5px;
+            background:skyblue;
+            background: -moz-linear-gradient(left, #9bcfbe, #b7afea);
+            /* Safari 5.1+, Chrome 10+ */
+            background: -webkit-linear-gradient(left, #9bcfbe, #b7afea);
+            /* Opera 11.10+ */
+            background: -o-linear-gradient(left, #9bcfbe, #b7afea);
+        }
+        .ps-strip{
+            width:75%;
+            height:1.8rem;
+            border-radius: 5px;
+            background:skyblue;
+            background: -moz-linear-gradient(left, #ffcddc, #deaf8c);
+            /* Safari 5.1+, Chrome 10+ */
+            background: -webkit-linear-gradient(left, #ffcddc, #deaf8c);
+            /* Opera 11.10+ */
+            background: -o-linear-gradient(left, #ffcddc, #deaf8c);
+        }
+        /*第三屏底部*/
+        .bg3-bot {
+            background:url("images/bg3.png") no-repeat;
+            background-size: cover;
+        }
+        /*第四屏开始*/
+        .bg4-top {
+            margin-left: 50%;
+        }
+        /*第四屏内容*/
+        .bg3-con,
+        .bg4-con {
+            margin: 0 auto;
+            position:relative;
+            width:88%;
+            height:60%;
+        }
+        .bg3-con {
+            overflow: hidden;
+        }
+        .hx {
+            position:absolute;
+            display:block;
+            top: 3%;
+            left: 10%;
+            width: 35%;
+            height: 8rem;
+            padding:2%;
+            border-radius: 50%; 
+            background:#eef3fb url("images/hx.png") no-repeat 40% 0;
+            background-size: contain;
+        }
+        .zxm {
+            position:absolute;
+            display:block;
+            top: 28%;
+            left: 58%;
+            width: 35%;
+            height: 8rem;
+            padding:2%;
+            border-radius: 50%; 
+            background:#f2f9f6 url("images/zxm.png") no-repeat 40% 50%;
+            background-size: contain;
+        }
+        .gh {
+            position:absolute;
+            display:block;
+            top: 50%;
+            left: 20%;
+            width: 35%;
+            height: 8rem;
+            padding:2%;
+            border-radius: 50%; 
+            background:#eef9e9 url("images/gh.png") no-repeat 40% 45%;
+            background-size: contain;
+        }
+        /*第四屏底部*/
+        .bg4-bot {
+            background:url("images/bg4.png") no-repeat;
+            background-size: cover;
+        }
+        /*第五屏*/
+        .bg5-over {
+            margin: 0 auto;
+            width:80%;
+            height: 80%;
+            background:url("images/end.png") no-repeat 0 70%;
+            background-size: contain;
+        }
+        /*底部小箭头*/
+		#array{
+			position:absolute;z-index:999;-webkit-animation: start 1.5s infinite ease-in-out;
+		}
+		#fly {
+			-webkit-animation: move 1.5s infinite linear;
+		}
+		@-webkit-keyframes start {
+			0%,30% {opacity: 0;-webkit-transform: translate(0,10px);}
+			60% {opacity: 1;-webkit-transform: translate(0,0);}
+			100% {opacity: 0;-webkit-transform: translate(0,-8px);}
+		}
+		@-moz-keyframes start {
+			0%,30% {opacity: 0;-moz-transform: translate(0,10px);}
+			60% {opacity: 1;-moz-transform: translate(0,0);}
+			100% {opacity: 0;-moz-transform: translate(0,-8px);}
+		}
+		@keyframes start {
+			0%,30% {opacity: 0;transform: translate(0,10px);}
+			60% {opacity: 1;transform: translate(0,0);}
+			100% {opacity: 0;transform: translate(0,-8px);}
+		}
+		@-webkit-keyframes move {
+			0%,30% {-webkit-transform: translate(-10px,0);}
+			60% {-webkit-transform: translate(0,0);}
+			100% {-webkit-transform: translate(-10px,0);}
+		}
+		@-moz-keyframes move {
+			0%,30% {-moz-transform: translate(-10px,0);}
+			60% {-moz-transform: translate(0,0);}
+			100% {-moz-transform: translate(-10px,0);}
+		}
+		@keyframes move {
+			0%,30% {transform: translate(-10px,0);}
+			60% {transform: translate(0,0);}
+			100% {transform: translate(-10px,0);}
+		}  
+        /*音乐播放 */
+        #music {
+            position: absolute;
+            top: 3%;
+            right: 5%;
+            width: 3rem;
+            height: 3rem;
+            z-index: 999;
+            background:url("images/music.png") no-repeat;
+            background-size: contain;
+            border-radius: 50%;
+            -webkit-animation: musicMove 3s linear infinite;
+            -moz-animation: musicMove 3s linear infinite;
+            -ms-animation: musicMove 3s linear infinite;
+            -o-animation: musicMove 3s linear infinite;
+            animation: musicMove 3s linear infinite;
+            -webkit-animation-play-state:running;
+            animation-play-state:running;
+        }
+        @-webkit-keyframes musicMove {
+            100% {-webkit-transform: rotate(360deg); }
+        }
+        @-moz-keyframes musicMove {
+            100% { -moz-transform: rotate(360deg); }
+        }
+        @-ms-keyframes musicMove {
+            100% { -ms-transform: rotate(360deg); }
+        }
+        @-o-keyframes musicMove {
+            100% { -o-transform: rotate(360deg); }
+        }
+        @keyframes musicMove {
+            100% { transform: rotate(360deg); }
+        }
+	</style>
+</head>
+<body>
+    <!-- 预加载图片 -->
+    <div class="loading">
+        <div class="loadTime">
+            <strong>0</strong>
+            <em>%</em>
+        </div>
+    </div>
+	<div class="swiper-container">
+        <div id="music">
+            <audio src="audio/Day.mp3" autoplay autobuffer autoloop loop id="aud"></audio>   
+        </div>
+    <div class="swiper-wrapper">
+        <div class="swiper-slide bg1">
+        	<div class="cloud">
+        		<img class="cloud-bg ani" src="images/cloud.png" alt="" swiper-animate-effect="bounceInDown" swiper-animate-duration="1s" swiper-animate-delay="0.1s">
+        		<div class="resm">
+        			<h2 class="myname ani" swiper-animate-effect="bounceInDown" swiper-animate-duration="1s" swiper-animate-delay="0.5s">HELLO,我是唐咸正</h2>
+        			<img class="myresm ani" src="images/resume.png" alt="" swiper-animate-effect="bounceInUp" swiper-animate-duration="1s" swiper-animate-delay="0.5s">
+        		</div>
+        	</div>
+        	<div class="fly ani" id="fly" swiper-animate-effect="bounceInLeft" swiper-animate-duration="1s" swiper-animate-delay="0.5s">
+        		<img class="fly-bg ani" src="images/fly.png" alt="" swiper-animate-effect="bounceInLeft" swiper-animate-duration="1.5s" swiper-animate-delay="0.7s">
+        	</div>
+        </div>
+        <div class="swiper-slide bg2">
+        	<div class="bg2-top">
+        		<img src="images/cloud2.png" alt="" class="b2t-cloud ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1.5s" swiper-animate-delay="0.3s">
+        	</div>
+        	<div class="bg2-tit ani" swiper-animate-effect="bounceInDown" swiper-animate-duration="1s" swiper-animate-delay="0.6s">
+        		<img src="images/title.png" alt="" class="b2t-tit">
+        		<h2 class="bg2-h2 ani" swiper-animate-effect="bounceIn" swiper-animate-duration="1s" swiper-animate-delay="1s">个人信息</h2>
+        	</div>
+        	<div class="bg2-head ani" swiper-animate-effect="zoomIn" swiper-animate-duration="0.5s" swiper-animate-delay="1.5s">
+                <img src="images/tx.png" alt="头像" />   
+            </div>
+            <div class="bg2-con">
+                <p class="ani" swiper-animate-effect="zoomInUp" swiper-animate-duration="0.5s" swiper-animate-delay="1.8s">姓名：唐咸正</p>
+                <p class="ani" swiper-animate-effect="zoomInUp" swiper-animate-duration="0.5s" swiper-animate-delay="2.2s">年龄：24</p>
+                <p class="ani" swiper-animate-effect="zoomInUp" swiper-animate-duration="0.5s" swiper-animate-delay="2.6s">电话：13860439152</p>
+                <p class="ani" swiper-animate-effect="zoomInUp" swiper-animate-duration="0.5s" swiper-animate-delay="3s">邮箱：930420905@qq.com</p>
+            </div>
+            <div class="bg2-bot ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.6s">
+            </div>	
+        </div>
+        <div class="swiper-slide bg3">
+        	<div class="bg3-top">
+                <img src="images/cloud2.png" alt="" class="b3t-cloud ani" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
+            </div>
+            <div class="bg3-tit ani" swiper-animate-effect="fadeInRightBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
+                <img src="images/title.png" alt="" class="b3t-tit">
+                <h2 class="bg3-h2 ani" swiper-animate-effect="fadeInRightBig" swiper-animate-duration="0.5s" swiper-animate-delay="1s">专业技能</h2>
+            </div>
+            <div class="bg3-con">
+                <div class="con-html">
+                    <p class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="1.2s">HTML</p>
+                    <div class="html-strip ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="1.6s"></div>
+                </div>
+                <div class="con-css">
+                    <p class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="1.8s">CSS</p>
+                    <div class="css-strip ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="2.2s"></div>
+                </div>
+                <div class="con-js">
+                    <p class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="2.4s">JavaScript</p>
+                    <div class="js-strip ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="3.0s"></div>
+                </div>
+                <div class="con-ps">
+                    <p class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="3.2s"> PhotoShop</p>
+                    <div class="ps-strip ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="3.6s"></div>
+                </div>
+            </div>
+            <div class="bg3-bot ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.6s">
+            </div>
+        </div>
+        <div class="swiper-slide bg4">
+        	<div class="bg4-top">
+                <img src="images/cloud2.png" alt="" class="b4t-cloud ani" swiper-animate-effect="shake" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
+            </div>
+            <div class="bg4-tit">
+                <img src="images/title.png" alt="" class="b4t-tit ani" swiper-animate-effect="bounceInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
+                <h2 class="bg4-h2 ani" swiper-animate-effect="bounceIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.8s">项目展示</h2>
+            </div>
+            <div class="bg4-con">
+                <a href="http://hxweb01.duapp.com" class="hx ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="1.5s" swiper-animate-delay="1.3s"></a>
+                <a href="http://zxm666.duapp.com" class="gh ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1.5s" swiper-animate-delay="1.7s"></a>
+                <a href="http://gangh6.duapp.com" class="zxm ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="1.5s" swiper-animate-delay="2.1s"></a>    
+            </div>
+            <div class="bg4-bot ani" swiper-animate-effect="bounceInUp" swiper-animate-duration="1.5s" swiper-animate-delay="0.5s">
+            </div>
+        </div>
+        <div class="swiper-slide bg5">
+            <div class="bg5-over ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1.5s" swiper-animate-delay="0.6s"></div>
+            <div class="bg2-bot ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
+            </div>
+        </div>
+    </div>
+    <!-- 如果需要分页器 -->
+    <img src="images/arrow.png" style="width:25px;height:20px; bottom:10px; left:150px;" id="array" class="resize"> 
+    <div class="swiper-pagination"></div>
+	</div>
+    <script type="text/javascript">
+        // 预加载
+        var loadImg = []; // 创建一个数组，用于存储所有要预加载的图片路径
+                loadImg.push('images/arrow.png');
+                loadImg.push('images/bg2.png');
+                loadImg.push('images/bg3.png');
+                loadImg.push('images/bg4.png');
+                loadImg.push('images/cloud.png');
+                loadImg.push('images/cloud2.png');
+                loadImg.push('images/end.png');
+                loadImg.push('images/fly.png');
+                loadImg.push('images/gh.png');
+                loadImg.push('images/hx.png');
+                loadImg.push('images/music.png');
+                loadImg.push('images/resume.png');
+                loadImg.push('images/title.png');
+                loadImg.push('images/tx.png');
+                loadImg.push('images/zxm.png');
+                loadImg.push('images/loading.jpg');
+                preload({
+                    files : loadImg,
+                    progress : function(precent, currentImg) {
+                        // console.log("加载中");
+                        $(".loadTime strong").html(precent);
+                    },
+                    complete : function() {
+                        $(".loading").css({"display":"none"});
+                    }
+                });
+    </script>
+	<script type="text/javascript">
+		scaleW=window.innerWidth/320;
+		scaleH=window.innerHeight/480;
+		var resizes = document.querySelectorAll('.resize');
+		          for (var j=0; j<resizes.length; j++) {
+		           resizes[j].style.width=parseInt(resizes[j].style.width)*scaleW+'px';
+				   resizes[j].style.height=parseInt(resizes[j].style.height)*scaleH+'px';
+				   resizes[j].style.top=parseInt(resizes[j].style.top)*scaleH+'px';
+				   resizes[j].style.left=parseInt(resizes[j].style.left)*scaleW+'px'; 
+		          };
+		var mySwiper = new Swiper ('.swiper-container', {
+            // initialSlide :2,
+		    direction: 'vertical',
+		    // 如果需要分页器
+		    pagination: '.swiper-pagination',
+	        onInit: function(swiper){
+	        swiperAnimateCache(swiper);
+	        swiperAnimate(swiper);
+	    	  },
+	        onSlideChangeEnd: function(swiper){
+	    	swiperAnimate(swiper);
+	        },
+	    	onTransitionEnd: function(swiper){
+	    	swiperAnimate(swiper);
+	        }
+		  });
+        // 音乐控制
+        $("#music").on("click",function(){
+            $("#music").css({
+                    '-webkit-animation-play-state':'paused',
+                    'animation-play-state':'paused'
+                });
+            var music = $("#aud")[0];
+            if (music.paused) {
+                music.play();
+                $("#music").css({
+                    '-webkit-animation-play-state':'running',
+                    'animation-play-state':'running'
+                });
+                return;
+            }
+            music.pause();
+        })
+	</script>
+</body>
+</html>
